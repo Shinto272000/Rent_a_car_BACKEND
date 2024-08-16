@@ -35,7 +35,7 @@ import Car from "../Models/carModels.js";
           year,
           priceperDay,
           description,
-          // instructor: findInstructor._id,
+          // dealer: findDealer._id,
           image: imageUrl,
         });
         
@@ -68,7 +68,8 @@ import Car from "../Models/carModels.js";
     try {
       const {id} = req.params
       const {model,make, year, priceperDay, description} = req.body
-      const updateCar = await Car.findByIdAndUpdate(id,
+      const updateCar = await Car.findByIdAndUpdate(
+        id,
         {
           model,
           make,
@@ -80,7 +81,8 @@ import Car from "../Models/carModels.js";
       );
       return res.send(updateCar)
     } catch (error) {
-      
+      console.log("something went wrong", error);
+      res.send("failed to fetch car");
     }
   }
 
@@ -88,15 +90,16 @@ import Car from "../Models/carModels.js";
     try {
       const {id} = req.params
       console.log(typeof id);
-      const deleteCar = await Car.deleteOne({id})
+      const deleteCar = await Car.deleteOne({_id:id});
       if(!deleteCar){
         return res.send("failed to delete ")
       }
       return res.send("deleted")
       
+      
     } catch (error) {
       console.log("something went wrong", error);
-      res.send("failed to fetch car");
+      res.send("failed to delete car");
     }
   }
     const carController = {createCar,getCar,updateCar,deleteCar}

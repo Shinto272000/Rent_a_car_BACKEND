@@ -8,12 +8,17 @@ const checkAdmin = async (req, res) => {
 
   try {
     const dealer = req.user
-    const findDealer = await Dealer.findOne({ email: dealer.email });
+    console.log(dealer)
+    const findDealer = await Dealer.findOne({ email: dealer.data });
 
     if (!findDealer) {
-      return res.send("dealer not found");
+      return res.json({
+        success:false,
+      })
     }
-    return res.send("found");
+    return res.json({
+      success:true,
+    })
   }
   catch (error) {
     console.log(error);
@@ -79,7 +84,7 @@ const singin = async (req, res) => {
     const token = adminToken(dealer);
 
     res.cookie("token", token);
-    res.json({ message: "Logged in!", token });
+    res.send("Logged in!");
   } catch (error) {
     console.error("Error", error);
     res.status(500).send("Internal Server Error");
@@ -108,4 +113,4 @@ const removeDealers = async (req, res) => {
 
 const dealercontroller = { singin, singup, getAllDealers, removeDealers,checkAdmin }
 
-export default dealercontroller
+export default dealercontroller 

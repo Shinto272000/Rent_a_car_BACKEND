@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       maxLength: 50,
     },
-    cars: [{ type: mongoose.Types.ObjectId, ref: "Car" }],
+    cars: [{ type: mongoose.Types.ObjectId, ref: "Car" }], 
   },
   { timestamps: true }
 );

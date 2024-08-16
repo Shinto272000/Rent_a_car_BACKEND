@@ -24,6 +24,7 @@ const checkUser = async (req, res) => {
 
 const signup = async (req, res) => {
   try {
+    console.log(req.body);
     const { email, password, firstName, lastName } = req.body
     console.log(email);
 
@@ -64,6 +65,7 @@ const signup = async (req, res) => {
 
 const signin = async (req, res) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });

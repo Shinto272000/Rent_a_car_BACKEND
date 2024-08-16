@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken"
 import serverConfig from "../Config/serverConfig.js";
 
-const authenticateDls = (req,res,next)=>{
+const authenticateDeals
+ = (req,res,next)=>{
 
     const token = req.cookies.token
     jwt.verify(token,serverConfig.token, (err, result)=>{
@@ -13,7 +14,7 @@ const authenticateDls = (req,res,next)=>{
         console.log("admin token",result);
 
         if(result.role !== "admin" && result.role !== "dealer"){
-            return res.status(401).send("not admin && not dealer")
+            res.status(401).send("not admin && not dealer")   
         }
 
         req.user=result
@@ -22,4 +23,7 @@ const authenticateDls = (req,res,next)=>{
     });
 };
 
-export default authenticateDls; 
+export default authenticateDeals
+; 
+
+
