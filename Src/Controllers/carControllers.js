@@ -63,6 +63,18 @@ import Car from "../Models/carModels.js";
         
     }
   }
+
+  const getoneCar = async(req,res)=>{
+
+    try {
+        const cars = await Car.find({_id:id})
+        return res.send(cars)
+    } catch (error) {
+        console.log("something went wrong", error);
+      res.send("failed to fetch car");
+        
+    }
+  }
   const updateCar =async (req,res)=>{
 
     try {
@@ -102,5 +114,5 @@ import Car from "../Models/carModels.js";
       res.send("failed to delete car");
     }
   }
-    const carController = {createCar,getCar,updateCar,deleteCar}
+    const carController = {createCar,getCar,updateCar,deleteCar,getoneCar}
   export default  carController 
