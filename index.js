@@ -1,7 +1,7 @@
 import express from "express"
-import serverConfig from "./Config/serverConfig.js"
-import dbConnection from "./Config/dbCongig.js"
-import apiRouter from "./Routes/index.js"
+import serverConfig from "./Src/Config/serverConfig.js"
+import dbConnection from "./Src/Config/dbCongig.js"
+import apiRouter from "./Src/Routes/index.js"
 import cors from "cors"
 import cookieParser from "cookie-parser"
   
