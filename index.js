@@ -17,7 +17,7 @@ app.use(cors(
 }
 )) 
 app.use(cookieParser())
-app.get("/",(req,res)=>{
+app.get("/",(req,res)=>{ 
     res.send("hello world")
 })
 
@@ -26,7 +26,7 @@ app.use("/api",apiRouter)
 app.listen(serverConfig.Port,(err)=>{
 console.log(`port connected successfully on port ${serverConfig.Port}`);
 dbConnection();
-console.log("Db connected");
+console.log("Db connected");   
 
 })
 
