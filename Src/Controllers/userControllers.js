@@ -70,6 +70,11 @@ const signin = async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    console.log("loged user",user._id);
+
+    const userId = user._id
+    
+
     if (!user) {
       return res.send("User not found");
     }
@@ -82,7 +87,8 @@ const signin = async (req, res) => {
 
     const token = generateToken(email);
     res.cookie("token", token);
-    res.send("Logged in!");
+    // res.send("Logged in!");
+    res.json({message:"Logged in!",userId})
   } catch (error) {
     console.log(error, "Something wrong");
     res.status(500).send("Internal Server Error");

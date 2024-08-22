@@ -66,7 +66,7 @@ const verify= async (req, res) => {
       await payment.save();
 
       res.json({
-        message: "Payement Successfully",
+        message: "Payement Successfully",  
       });
     }
   } catch (error) {

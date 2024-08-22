@@ -25,6 +25,28 @@ const checkAdmin = async (req, res) => {
   }
 }
 
+const checkonlyAdmin = async (req, res) => {
+
+  try {
+    const dealer = req.user
+    console.log(dealer)
+    const findDealer = await Dealer.findOne({ email: dealer.data });
+
+    if (!findDealer) {
+      return res.json({
+        success:false,
+      })
+    }
+    if(findDealer.role==='admin'){
+      return res.send("Admin signed")
+    }
+    
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
 
 const singup = async (req, res) => { 
   try {
@@ -39,19 +61,19 @@ const singup = async (req, res) => {
     const saltRounds = 10;
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
-    const newDealer = new Dealer({
+    const newDealer = new Dealer({ 
       name,
       email,
       hashPassword,
       role: "dealer",
     });
-    const newDealerCreated = await newDealer.save();
+    const newDealerCreated = await newDealer.save();  
 
     if (!newDealerCreated) {
       return res.send("dealer is not created");
     }
 
-    const token = adminToken(newDealerCreated);
+    const token = adminToken(newDealerCreated); 
     res.cookie("token", token);
     res.json({ message: "signned in!", token });
   } catch (error) {
@@ -83,8 +105,11 @@ const singin = async (req, res) => {
 
     const token = adminToken(dealer);
 
+    const dealerRole= dealer.role
+
     res.cookie("token", token);
-    res.send("Logged in!");
+    return res.json({message :"Logged in!",token,dealerRole})
+
   } catch (error) {
     console.error("Error", error);
     res.status(500).send("Internal Server Error");
@@ -111,6 +136,6 @@ const removeDealers = async (req, res) => {
   return res.send("removed sucessfully");
 };
 
-const dealercontroller = { singin, singup, getAllDealers, removeDealers,checkAdmin }
+const dealercontroller = { singin, singup, getAllDealers, removeDealers,checkAdmin,checkonlyAdmin }
 
 export default dealercontroller 

@@ -3,6 +3,8 @@ import userRouter from "./userRoutes.js";
 import carRouter from "./carRoutes.js";
 import dealerRouter from "./dealerRoutes.js";
 import paymentRoutes from "./payment.js";
+import orderRouter from "./orderRoutes.js";
+import reviewRouter from "./reviewRouter.js";
 
 const v1Router= express.Router()
 
@@ -15,5 +17,7 @@ v1Router.use("/users",userRouter)
 v1Router.use("/dealer",dealerRouter)
 v1Router.use("/cars",carRouter)
 v1Router.use("/payment",paymentRoutes)
+v1Router.use("/orderdata",orderRouter) 
+v1Router.use("/review",reviewRouter)
 
 export default v1Router 
