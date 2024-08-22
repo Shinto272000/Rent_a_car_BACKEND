@@ -23,12 +23,25 @@ app.get("/",(req,res)=>{
 
 app.use("/api",apiRouter)
 
-app.listen(serverConfig.Port,(err)=>{
-console.log(`port connected successfully on port ${serverConfig.Port}`);
-dbConnection();
-console.log("Db connected");   
+// app.listen(serverConfig.Port,(err)=>{
+// console.log(`port connected successfully on port ${serverConfig.Port}`);
+// dbConnection();
+// console.log("Db connected");   
 
-})
+// })
+export default async (req, res) => {
+    try {
+      await dbConnection(); // Ensure the database connection is established
+      return new Promise((resolve, reject) => {
+        app(req, res, (err) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      }); 
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
 
 // {
 //     "rewrites": [
