@@ -23,20 +23,12 @@ app.get("/",(req,res)=>{
 
 app.use("/api",apiRouter)
 
-// app.listen(serverConfig.Port,(err)=>{
-// console.log(`port connected successfully on port ${serverConfig.Port}`);
-// dbConnection();
-// console.log("Db connected");   
+app.listen(serverConfig.Port,(err)=>{
+console.log(`port connected successfully on port ${serverConfig.Port}`);
+dbConnection();
+console.log("Db connected");    
 
-// })
-export default (req, res) => {
-    return new Promise((resolve, reject) => {
-      app(req, res, (err) => {
-        if (err) reject(err);
-        else resolve();
-      });
-    });
-  };
+})
 
 // {
 //     "rewrites": [
