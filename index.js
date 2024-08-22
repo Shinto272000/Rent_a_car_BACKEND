@@ -3,7 +3,7 @@ import serverConfig from "./Src/Config/serverConfig.js"
 import dbConnection from "./Src/Config/dbCongig.js"
 import apiRouter from "./Src/Routes/index.js"
 import cors from "cors"
-import cookieParser from "cookie-parser"
+import cookieParser from "cookie-parser"  
   
 
 const app =express()
