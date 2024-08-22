@@ -29,3 +29,9 @@ dbConnection();
 console.log("Db connected");
 
 })
+
+// {
+//     "rewrites": [
+//         {"source": "/(.*)", "destination": "/"}
+//     ]
+// }
