@@ -74,7 +74,15 @@ const singup = async (req, res) => {
     }
 
     const token = adminToken(newDealerCreated); 
-    res.cookie("token", token);
+    const isProduction = process.env.NODE_ENV === "production";
+        // console.log(isProduction,'====idProduction');
+        
+        res.cookie("token", token, {
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,
+            secure: isProduction, // Secure only in production
+            sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
+        });
     res.json({ message: "signned in!", token });
   } catch (error) {
     console.log(error, "Something wrong");
@@ -107,7 +115,15 @@ const singin = async (req, res) => {
 
     const dealerRole= dealer.role
 
-    res.cookie("token", token);
+    const isProduction = process.env.NODE_ENV === "production";
+        // console.log(isProduction,'====idProduction');
+        
+        res.cookie("token", token, {
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,
+            secure: isProduction, // Secure only in production
+            sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
+        });
     return res.json({message :"Logged in!",token,dealerRole})
 
   } catch (error) {
