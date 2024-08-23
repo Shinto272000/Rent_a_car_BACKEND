@@ -8,16 +8,15 @@ import cookieParser from "cookie-parser"
 
 const app =express()
 
-
-app.use(express.json())
 app.use(cors(
          {
     origin:["http://localhost:5173","https://car-rental-front-end-haha.vercel.app"], 
     credentials : true, 
 }
 )) 
+app.use(express.json())
 app.use(cookieParser())
-app.get("/",(req,res)=>{ 
+app.get("/",(req,res)=>{  
     res.send("hello world")
 })
 
