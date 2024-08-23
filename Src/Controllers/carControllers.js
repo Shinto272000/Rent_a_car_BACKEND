@@ -1,5 +1,5 @@
 
-import { cloudinaryInstance } from "../config/cloudinaryConfig.js";
+import { cloudinaryInstance } from "../Config/cloudinaryConfig.js";
 import Car from "../Models/carModels.js";
 
  const createCar = async (req, res) => {
