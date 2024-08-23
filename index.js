@@ -12,8 +12,8 @@ const app =express()
 app.use(express.json())
 app.use(cors(
          {
-    origin:["http://localhost:5173","https://car-rental-front-end-pqrs.vercel.app"], 
-    credentials : true,
+    origin:["http://localhost:5173","https://car-rental-front-end-haha.vercel.app/"], 
+    credentials : true, 
 }
 )) 
 app.use(cookieParser())
