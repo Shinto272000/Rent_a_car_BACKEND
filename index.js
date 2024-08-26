@@ -10,9 +10,9 @@ const app =express()
 
 app.use(cors(
          {
-    origin:'*', 
-    // credentials : true, 
-     methods: 'GET,POST,PUT,DELETE,OPTIONS', 
+    origin:["https://car-rental-front-end-secodhooope.vercel.app"], 
+    credentials : true, 
+    //  methods: 'GET,POST,PUT,DELETE,OPTIONS', 
 }
 )) 
 app.use(express.json())
