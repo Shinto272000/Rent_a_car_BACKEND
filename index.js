@@ -11,7 +11,8 @@ const app =express()
 app.use(cors(
          {
     origin:["http://localhost:5173","https://car-rental-front-end-ten.vercel.app/"], 
-    credentials : true, 
+    credentials : true,
+     methods: 'GET,POST,PUT,DELETE,OPTIONS', 
 }
 )) 
 app.use(express.json())
