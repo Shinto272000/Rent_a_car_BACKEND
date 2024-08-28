@@ -10,7 +10,7 @@ const app =express()
 
 app.use(cors(
          {
-    origin:["https://car-rental-front-end-mohanlal.vercel.app","http://localhost:5173"],  
+    origin:["https://car-rental-front-end-renderhelp.vercel.app","http://localhost:5173"],  
     
      methods:['GET','POST','PUT','DELETE','OPTIONS'], 
      allowedHeaders:['Content-Type', 'Authorization'], 
