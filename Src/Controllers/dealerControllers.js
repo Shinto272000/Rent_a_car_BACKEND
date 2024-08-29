@@ -113,16 +113,19 @@ const singin = async (req, res) => {
 
     const token = adminToken(dealer);
 
+    console.log("dealer controllers token is",token );
+    
+
     const dealerRole= dealer.role
 
-    // const isProduction = process.env.NODE_ENV === "production";
+    const isProduction = process.env.NODE_ENV === "production";
         // console.log(isProduction,'====idProduction');
         
-        res.cookie("token", token, {sameSite:"None",secure:true
-            // maxAge: 24 * 60 * 60 * 1000, // 1 day
-            // httpOnly: true,
-            // secure: isProduction, // Secure only in production
-            // sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
+        res.cookie("token", token, {
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,
+            secure: isProduction, // Secure only in production
+            sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
         });
     return res.json({message :"Logged in!",token,dealerRole})
 
