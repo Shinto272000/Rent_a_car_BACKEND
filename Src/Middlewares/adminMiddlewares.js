@@ -5,6 +5,8 @@ import serverConfig from "../Config/serverConfig.js";
 const authenticateAdmin = (req,res,next)=>{
 
     const token = req.cookies.token;
+    console.log("authentcate admin token is",token);
+    
     jwt.verify(token,serverConfig.token, (err, result)=>{
         if (err){
             console.log(err);

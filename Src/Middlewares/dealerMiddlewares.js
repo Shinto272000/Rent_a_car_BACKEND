@@ -5,6 +5,8 @@ const authenticateDeals
  = (req,res,next)=>{
 
     const token = req.cookies.token
+    console.log("dealer signin token is",token );
+    
     jwt.verify(token,serverConfig.token, (err, result)=>{
         if (err){
             console.log(err);
