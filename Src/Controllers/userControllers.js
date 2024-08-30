@@ -97,14 +97,14 @@ const signin = async (req, res) => {
     const isProduction = process.env.NODE_ENV === "production";
         // console.log(isProduction,'====idProduction');
         
-        res.cookie("tokenssss", token, {
+        res.cookie("token", token, {
             maxAge: 24 * 60 * 60 * 1000, // 1 day
             httpOnly: true,
             secure: isProduction, // Secure only in production
             sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
         });
     // res.send("Logged in!");
-    res.json({message:"Logged in!",userId})
+    res.json({message:"Logged in!",userId,token})
   } catch (error) {
     console.log(error, "Something wrong");
     res.status(500).send("Internal Server Error");
