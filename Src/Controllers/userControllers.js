@@ -97,7 +97,7 @@ const signin = async (req, res) => {
     const isProduction = process.env.NODE_ENV === "production";
         // console.log(isProduction,'====idProduction');
         
-        res.cookie("token", token, {
+        res.cookie("tokenssss", token, {
             maxAge: 24 * 60 * 60 * 1000, // 1 day
             httpOnly: true,
             secure: isProduction, // Secure only in production
