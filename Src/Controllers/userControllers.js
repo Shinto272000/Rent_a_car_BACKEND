@@ -73,14 +73,14 @@ const signup = async (req, res) => {
 
 const signin = async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body); 
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
 
     console.log("loged user",user._id);
 
-    const userId = user._id
+    // const userId = user._id 
     
 
     if (!user) {
@@ -98,13 +98,13 @@ const signin = async (req, res) => {
         // console.log(isProduction,'====idProduction');
         
         res.cookie("token", token, {
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
             httpOnly: true,
-            secure: isProduction, // Secure only in production
-            sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
+            secure: process.env.NODE_ENV === "production", // Secure only in production
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "Lax", // 'None' for production, 'Lax' for development
         });
     // res.send("Logged in!");
-    res.json({message:"Logged in!",userId,token})
+    res.json({message:"Logged in!",userId:user._id,token});
   } catch (error) {
     console.log(error, "Something wrong");
     res.status(500).send("Internal Server Error");
