@@ -8,11 +8,11 @@ userRouter.get("/",(req,res)=>{
     res.send("Hello shinto");
 })
 
-userRouter.post("/signup",userController.signup)
-userRouter.post("/signin",userController.signin)
-userRouter.get("/all-cars",carController.getCar)
-userRouter.get("/all-cars/:id",carController.getoneCar)
-userRouter.get("/check-user",authenticateUser,userController.checkUser)
+userRouter.post("/signup",userController.signup) 
+userRouter.post("/signin",userController.signin) 
+userRouter.get("/all-cars",carController.getCar) 
+userRouter.get("/all-cars/:id",carController.getoneCar) 
+userRouter.get("/check-user",authenticateUser,userController.checkUser) 
 
 
 export default userRouter 

@@ -4,7 +4,7 @@ import serverConfig from "../Config/serverConfig.js";
 
 function authenticateUser(req, res, next){
 
-    const token = req.cookies.token; 
+    const token = req.sessionStorage.token; 
     jwt.verify(token,serverConfig.token, (err, user)=>{
         if (err){ 
             console.log(err); 
