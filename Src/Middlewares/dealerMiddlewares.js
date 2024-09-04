@@ -4,7 +4,8 @@ import serverConfig from "../Config/serverConfig.js";
 const authenticateDeals
  = (req,res,next)=>{
 
-    const token = req.sessionStorage.token;
+    // const token = req.sessionStorage.token;
+    const token = req.cookies.token;
     console.log("dealer middleware token is",token );
     
     jwt.verify(token,serverConfig.token, (err, result)=>{
