@@ -65,7 +65,7 @@ const testingg = (req,res)=>{
 }
 
 const getallorder =async (req,res)=>{
-    const orders = await Orderrs.find()
+    const orders = await Orderr.find()
     res.send(orders)
 }
 
