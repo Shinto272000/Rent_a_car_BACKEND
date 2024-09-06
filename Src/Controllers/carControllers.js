@@ -21,13 +21,13 @@ import Car from "../Models/carModels.js";
         
         const imageUrl = result.url;
   
-        const { model,make, year, priceperDay, description } = req.body;
+        const { model,make, year, priceperDay, description,dealerEmail } = req.body;
   
-        // const findDealer = await Dealer.findOne({ email: dealerEmail });
+        const findDealer = await Dealer.findOne({ email: dealerEmail });
   
-        // if (!findDealer) {
-        //   return res.send("please add dealer first");
-        // }
+        if (!findDealer) {
+          return res.send("please add dealer first");
+        }
   
         const createCar = new Car({
           model,
@@ -35,7 +35,7 @@ import Car from "../Models/carModels.js";
           year,
           priceperDay,
           description,
-          // dealer: findDealer._id,
+          dealer: findDealer._id,
           image: imageUrl,
         });
         
