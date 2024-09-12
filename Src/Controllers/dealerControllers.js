@@ -117,6 +117,7 @@ const singin = async (req, res) => {
     
 
     const dealerRole= dealer.role
+    const dealerId=dealer._id
 
     const isProduction = process.env.NODE_ENV === "production";
         // console.log(isProduction,'====idProduction');
@@ -127,7 +128,7 @@ const singin = async (req, res) => {
             secure: isProduction, // Secure only in production
             sameSite: isProduction ? "None" : "Lax", // 'None' for production, 'Lax' for development
         });
-    return res.json({message :"Logged in!",token,dealerRole})
+    return res.json({message :"Logged in!",token,dealerRole,dealerId })
 
   } catch (error) {
     console.error("Error", error);
