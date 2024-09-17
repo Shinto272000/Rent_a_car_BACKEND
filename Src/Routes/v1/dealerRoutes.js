@@ -18,4 +18,5 @@ dealerRouter.delete("/cars/:id",carController.deleteCar)
 dealerRouter.post("/addcars",upload.single("image"),carController.createCar)
 dealerRouter.put("/cars/:id",upload.single("image"),carController.updateCar)
 dealerRouter.get("/get-car/:id",carController.getoneCar)
+dealerRouter.get("/dealercar/:id",carController.dealersCar)
 export default dealerRouter 

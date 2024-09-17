@@ -189,5 +189,19 @@ const updateCar = async (req, res) => {
       res.send("failed to delete car");
     }
   }
-    const carController = {createCar,getCar,updateCar,deleteCar,getoneCar}
+
+  const dealersCar = async(req,res)=>{
+    const {dis} = req.params
+
+    try {
+        const dealersscar = await Car.findOne({dealer:dis})
+        return res.send(dealersscar)
+        
+    } catch (error) {
+        console.log("something went wrong", error);
+      res.send("failed to fetch car");
+        
+    }
+  }
+    const carController = {createCar,getCar,updateCar,deleteCar,getoneCar,dealersCar}
   export default  carController 
