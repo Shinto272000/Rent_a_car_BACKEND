@@ -191,10 +191,10 @@ const updateCar = async (req, res) => {
   }
 
   const dealersCar = async(req,res)=>{
-    const {dis} = req.params
+    const {id} = req.params
 
-    try {
-        const dealersscar = await Car.findOne({dealer:dis})
+    try {  
+        const dealersscar = await Car.findOne({dealer:id})
         return res.send(dealersscar)
         
     } catch (error) {
@@ -204,4 +204,6 @@ const updateCar = async (req, res) => {
     }
   }
     const carController = {createCar,getCar,updateCar,deleteCar,getoneCar,dealersCar}
-  export default  carController 
+  export default  carController
+  
+  // 66c24a388fd68b44be8a4ef7
