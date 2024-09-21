@@ -194,7 +194,7 @@ const updateCar = async (req, res) => {
     const {id} = req.params
 
     try {  
-        const dealersscar = await Car.findOne({dealer:id})
+        const dealersscar = await Car.find({dealer:id})
         return res.send(dealersscar)
         
     } catch (error) {
