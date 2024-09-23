@@ -8,7 +8,8 @@ const orderrSchema = new mongoose.Schema(
         year: Number,
         description: String,
         image: String,
-        priceperDay: Number
+        priceperDay: Number,
+        dealer: [{ type: String }],
       },
       days: Number,
       totalAmount: Number,
