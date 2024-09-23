@@ -7,5 +7,6 @@ const orderRouter = express.Router()
 orderRouter.post("/details",ordercontroller.orderdatas)  
 orderRouter.get("/testing",ordercontroller.testingg)
 orderRouter.get('/orders/:userId',ordercontroller.userorder);
+orderRouter.get('/orders/dealers/:dealerId',ordercontroller.dealerorder);
 orderRouter.get('/allorders',ordercontroller.getallorder);
 export default orderRouter

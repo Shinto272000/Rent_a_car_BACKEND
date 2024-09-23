@@ -86,6 +86,23 @@ try {
 }
 }
 
-const ordercontroller = {testingg,orderdatas,userorder,getallorder}
+const dealerorder= async (req,res)=>{
+    try {
+        const {dealerId} = req.params;
+    
+        if(!dealerId){
+            return res.status(400).json({error:"userid is required"})
+        }
+        const orders = await Orderr.find({"car.dealer":dealerId})
+    
+        res.status(200).json(orders)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error : " Error occured while fetching"})
+        
+    }
+    }
+
+const ordercontroller = {testingg,orderdatas,userorder,getallorder,dealerorder}
 
 export default ordercontroller;
