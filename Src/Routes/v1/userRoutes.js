@@ -12,7 +12,8 @@ userRouter.post("/signup",userController.signup)
 userRouter.post("/signin",userController.signin) 
 userRouter.get("/all-cars",carController.getCar) 
 userRouter.get("/all-cars/:id",carController.getoneCar) 
-userRouter.get("/check-user",authenticateUser,userController.checkUser) 
+userRouter.get("/check-user",authenticateUser,userController.checkUser)
+userRouter.get("/username/:userId",userController.username) 
 
 
 export default userRouter 

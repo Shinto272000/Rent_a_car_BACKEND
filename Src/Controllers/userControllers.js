@@ -110,6 +110,25 @@ const signin = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
-const userController = { signup, ping, signin,checkUser }
+
+const username= async (req,res)=>{
+  try {
+      const {userId} = req.params;
+  
+      if(!userId){
+          return res.status(400).json({error:"userid is required"})
+      }
+      const usersname = await User.find({_id:userId})
+  
+      res.status(200).json(usersname)
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({error : " Error occured while fetching"})
+      
+  }
+  }
+
+  
+const userController = { signup, ping, signin,checkUser,username }
 
 export default userController
