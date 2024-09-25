@@ -11,5 +11,6 @@ reviewRouter.get("/",(req,res)=>{
 
 reviewRouter.post("/reviewdatas",reviewController.reviewdatas)
 reviewRouter.get("/getreview",reviewController.getallreview)
+reviewRouter.get("/getreoneview/:id",reviewController.singleReview)
 
 export default reviewRouter 

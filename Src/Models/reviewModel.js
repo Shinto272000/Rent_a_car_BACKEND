@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const reviewSchema = new mongoose.Schema(
   {
+
+    userId: { 
+      type: Number,
+      required: true,
+    },
     fullName: {
         type: String,
         required: true,

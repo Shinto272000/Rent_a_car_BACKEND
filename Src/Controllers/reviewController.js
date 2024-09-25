@@ -3,14 +3,14 @@ import Review from "../Models/reviewModel.js";
 const reviewdatas = async (req, res) => {
     try {
         // Validate request body
-        const { fullName, review, rating} = req.body;
+        const { userId,fullName, review, rating} = req.body;
         if (!fullName || !review || !rating) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
         // Create and save the new order
         const newReviews = new Review({
-            fullName, review, rating,
+            userId,fullName, review, rating,
         });
 
         await newReviews.save();
@@ -39,6 +39,20 @@ const getallreview = async(req,res)=>{
     res.send(allreview)
 }
 
-const reviewController = {reviewdatas,getallreview}
+const singleReview = async(req,res)=>{
+    const {id} = req.params
+
+    try {  
+        const userreview = await Review.find({userId:id})
+        return res.send(userreview)
+        
+    } catch (error) {
+        console.log("something went wrong", error);
+      res.send("failed to fetch review");
+        
+    }
+  }
+
+const reviewController = {reviewdatas,getallreview,singleReview}
 
 export default reviewController
