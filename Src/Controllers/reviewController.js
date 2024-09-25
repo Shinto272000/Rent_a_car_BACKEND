@@ -3,8 +3,9 @@ import Review from "../Models/reviewModel.js";
 const reviewdatas = async (req, res) => {
     try {
         // Validate request body
+         console.log('Request body:', req.body); 
         const { userId,fullName, review, rating} = req.body;
-        if (!fullName || !review || !rating) {
+        if (!userId||!fullName || !review || !rating) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
