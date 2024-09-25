@@ -43,8 +43,11 @@ const singleReview = async(req,res)=>{
     const {id} = req.params
 
     try {  
-        const userreview = await Review.find({userId:id})
-        return res.send(userreview)
+        const userReview = await Review.find({userId:id})
+        if (!userReview) {
+            return res.status(404).send("No review found for this user.");
+          }
+        return res.send(userReview)
         
     } catch (error) {
         console.log("something went wrong", error);
